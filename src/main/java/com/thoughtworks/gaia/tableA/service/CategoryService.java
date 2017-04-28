@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  * Created by haoyuze on 2017/4/28.
  */
@@ -28,5 +30,13 @@ public class CategoryService implements Loggable {
             throw new NotFoundException();
         }
         return categoryMapper.map(categoryModel,Category.class);
+    }
+    
+    public List<Category> getAllCategories(){
+        List<CategoryModel> categoryModelList = categoryDao.where().queryList();
+        if(categoryModelList == null){
+            throw  new NotFoundException();
+        }
+        return categoryMapper.mapList(categoryModelList,Category.class);
     }
 }

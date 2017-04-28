@@ -6,12 +6,15 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
+import org.codehaus.jettison.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.ws.rs.*;
+import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.List;
 
 /**
  * Created by haoyuze on 2017/4/28.
@@ -32,9 +35,21 @@ public class CategoryEndPoint {
             @ApiResponse(code = 404, message = "No TableA matches given id")
     })
     @GET
-    public Response getTableA(@PathParam("category_id") Long categoryId) {
-
+    public Response getCategoryById(@PathParam("category_id") Long categoryId) {
         Category category = categoryService.getCategories(categoryId);
         return Response.ok().entity(category).build();
+    }
+
+    @Path("/")
+    @ApiOperation(value = "Get tableA by id")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Get TableA successfully"),
+            @ApiResponse(code = 404, message = "No TableA matches given id")
+    })
+    @GET
+    public Response getAllCategories() {
+        List<Category> categoryList = categoryService.getAllCategories();
+        GenericEntity<List<Category>> entity = new GenericEntity<List<Category>>(categoryList){};
+        return  Response.ok().entity(entity).build();
     }
 }

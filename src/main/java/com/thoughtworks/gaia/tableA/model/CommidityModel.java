@@ -13,28 +13,28 @@ import javax.persistence.Table;
 @Table(name = "COMMODITY")
 public class CommidityModel extends IdBaseModel {
 
-    @Column(name = "name", nullable = false,length = 64)
+    @Column(name = "name", nullable = false, length = 64)
     private String name;
 
     @Column(name = "price", nullable = false)
     private Double price;
 
-    @Column(name = "category_id", nullable = false,length = 20)
+    @Column(name = "category_id", nullable = false, length = 20)
     private Long category_id;
 
-    @Column(name = "color", nullable = true,length = 64)
+    @Column(name = "color", nullable = true, length = 64)
     private String color;
 
-    @Column(name = "specification", nullable = true,length = 64)
+    @Column(name = "specification", nullable = true, length = 64)
     private String specification;
 
-    @Column(name = "description", nullable = true,length = 64)
+    @Column(name = "description", nullable = true, length = 64)
     private String description;
 
     @Column(name = "amount", nullable = false)
     private Double amount;
 
-    @Column(name = "picture", nullable = true,length = 200)
+    @Column(name = "picture", nullable = true, length = 200)
     private String picture;
 
     public String getName() {

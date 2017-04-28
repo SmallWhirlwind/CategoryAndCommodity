@@ -1,8 +1,12 @@
 package com.thoughtworks.gaia.tableA.model;
 
 import com.thoughtworks.gaia.common.jpa.IdBaseModel;
+import org.hibernate.annotations.*;
+import org.hibernate.annotations.CascadeType;
 
 import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.util.List;
 
 /**
@@ -16,6 +20,7 @@ public class CategoryModel extends IdBaseModel {
 
     @OneToMany
     @JoinColumn(name = "category_id")
+    @Cascade(CascadeType.ALL)
     private List<CommidityModel> commidityModelList;
 
     public List<CommidityModel> getCommidityModelList() {
