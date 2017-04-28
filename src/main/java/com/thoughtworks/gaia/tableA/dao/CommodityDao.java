@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
  * Created by haoyuze on 2017/4/28.
  */
 @Component
-public class CommodityDao extends BaseDaoWrapper {
+public class CommodityDao extends BaseDaoWrapper<CommidityModel> {
     public CommodityDao() {
         super(CommidityModel.class);
     }
